@@ -2,9 +2,8 @@
 # SG
 module "sg" {
   source = "terraform-aws-modules/security-group/aws"
-
   name        = "${var.projet}-jenkins-sg"
-  description = "Security Group pour Jenkins Server"
+  description = "Security Group pour Jenkins"
   vpc_id      = var.vpc_id
 
   ingress_with_cidr_blocks = [
@@ -32,22 +31,17 @@ module "sg" {
       cidr_blocks = "0.0.0.0/0"
     }
   ]
-
 }
 
 # EC2
 module "ec2_instance" {
   source = "terraform-aws-modules/ec2-instance/aws"
-
   name = "${var.projet}-Jenkins"
-
   instance_type               = var.instance_type
   key_name                    = "aws-devops"
   monitoring                  = true
   vpc_security_group_ids      = [module.sg.security_group_id]
   subnet_id                   = var.subnet_id
   associate_public_ip_address = true
-  user_data                   = file(var.user_data)
-  availability_zone           = "eu-west-3a"
-  
+  user_data                   = file(var.user_data)  
 }
