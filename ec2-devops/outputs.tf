@@ -1,6 +1,6 @@
 output "nom_instance" {
   description = "Nom de l'instance"
-  value       = "${var.projet}-Jenkins"
+  value       = var.ec2_nom
 }
 
 output "type_instance" {

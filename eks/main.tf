@@ -1,5 +1,5 @@
 locals {
-  cluster_name = "${var.projet}_eks"
+  cluster_name = "${var.projet}-eks"
 }
 
 

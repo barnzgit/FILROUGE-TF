@@ -3,8 +3,8 @@
 module "sg" {
   source = "terraform-aws-modules/security-group/aws"
 
-  name        = "${var.projet}-devops-sg"
-  description = "Security Group pour Devops"
+  name        = "${var.ec2_nom}-sg"
+  description = "Security Group pour ${var.ec2_nom}"
   vpc_id      = var.vpc_id
 
   ingress_with_cidr_blocks = [
@@ -38,16 +38,13 @@ module "sg" {
 # EC2
 module "ec2_instance" {
   source = "terraform-aws-modules/ec2-instance/aws"
-
-  name = "${var.projet}-devops"
-
+  name = var.ec2_nom
   instance_type               = var.instance_type
-  key_name                    = "aws-devops"
+  key_name                    = var.ec2_key
   monitoring                  = true
   vpc_security_group_ids      = [module.sg.security_group_id]
   subnet_id                   = var.subnet_id
   associate_public_ip_address = true
   user_data                   = file(var.user_data)
-  availability_zone           = "eu-west-3a"
   
 }

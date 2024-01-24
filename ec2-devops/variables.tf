@@ -1,6 +1,11 @@
-variable "projet" {
-  description = "Nom du projet"
-  default     = "filrouge"
+variable "ec2_nom" {
+  description = "Nom de l'instance"
+  default     = "filrouge-devops"
+}
+
+variable "ec2_key" {
+  description = "Nom de la key pair"
+  default     =  "aws-devops"
 }
 
 variable "vpc_id" {
