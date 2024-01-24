@@ -11,13 +11,13 @@ variable "ec2_key" {
 variable "vpc_id" {
   description = "VPC ID"
   type        = string
-  default     = "vpc-05094a48a33a27ecb"
+  default     = "vpc-08a1390e2dd6d9325"
 }
 
 variable "subnet_id" {
   description = "Subnet ID"
   type        = string
-  default     = "subnet-0b1c50b7794b140ee"
+  default     = "subnet-0404fdf890e384482"
 }
 
 variable "instance_type" {
